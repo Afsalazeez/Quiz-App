@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="2dp"
+        app:contentPadding="4dp"
+        app:cardUseCompatPadding="true"
+        android:dividerHeight="0.0px"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        app:cardElevation="4dp"
+        android:elevation="8dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <ImageButton
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:id="@+id/button_choice"
+                android:text="Science"
+                android:src="@drawable/animal_crop"
+                android:scaleType="centerCrop"
+                android:background="@drawable/animal_button"
+                android:textColor="@android:color/white"
+                android:fontFamily="sans-serif"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:clickable="true"/>
+            <TextView
+
+                android:textColor="@android:color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/text_view_choice"
+                android:text="animals"
+                android:fontFamily="sans-serif"
+                />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
