@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.GridView;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
@@ -15,7 +17,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,11 +27,27 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener mFAuthStateListener;
     private static int RC_SIGN_IN =123;
 
+    private GridView mGridView;
+
+    private CategoryAdapter mCategoryAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        mGridView = (GridView) findViewById(R.id.options_grid_view);
+        //category object creation
+        List<CategoryDet> categoryDets = new ArrayList<>();
+
+        mCategoryAdapter = new CategoryAdapter(this,R.layout.button_layout,categoryDets);
+        mGridView.setAdapter(mCategoryAdapter);
+
+        mCategoryAdapter.add(new CategoryDet(R.drawable.animal_crop,"Animals"));
+        mCategoryAdapter.add(new CategoryDet(R.drawable.nature,"Nature"));
+        mCategoryAdapter.add(new CategoryDet(R.drawable.sports_clipart,"Sports"));
+        mCategoryAdapter.add(new CategoryDet(R.drawable.movie_clipart,"Movie"));
         mFirebaseAuth = FirebaseAuth.getInstance();
 
         mFAuthStateListener = new FirebaseAuth.AuthStateListener() {
@@ -43,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                             AuthUI.getInstance()
                                     .createSignInIntentBuilder()
                                     .setIsSmartLockEnabled(false)
-                                    .setLogo(R.drawable.quizophile_logo)
+                                    .setLogo(R.drawable.quizophile_logo_transparent)
                                     .setAvailableProviders(Arrays.asList(
                                             new AuthUI.IdpConfig.EmailBuilder().build(),
                                             new AuthUI.IdpConfig.GoogleBuilder().build()
