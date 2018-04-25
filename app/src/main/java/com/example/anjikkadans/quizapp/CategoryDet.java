@@ -8,9 +8,11 @@ public class CategoryDet {
     private int imageUrl;
     private String buttonText;
 
+
     public CategoryDet(int imageUrl, String buttonText) {
         this.imageUrl = imageUrl;
         this.buttonText = buttonText;
+
     }
 
     public int getImageUrl() {
@@ -20,4 +22,6 @@ public class CategoryDet {
     public String getButtonText() {
         return buttonText;
     }
+
+
 }

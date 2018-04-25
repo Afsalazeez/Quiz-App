@@ -4,7 +4,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/card_view"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="2dp"
         app:contentPadding="4dp"
@@ -18,31 +18,90 @@
         android:clickable="true"
         >
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             >
-            <ImageButton
-                android:layout_width="180dp"
-                android:layout_height="180dp"
-                android:id="@+id/button_choice"
-                android:text="Science"
-                android:src="@drawable/animal_crop"
-                android:scaleType="centerCrop"
-                android:background="@drawable/animal_button"
-                android:textColor="@android:color/white"
-                android:fontFamily="sans-serif"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:clickable="true"/>
             <TextView
+                android:padding="4dp"
+                android:id="@+id/card_text_view"
+                android:text="Animals"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:layout_marginBottom="8dp"/>
 
-                android:textColor="@android:color/black"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/text_view_choice"
-                android:text="animals"
-                android:fontFamily="sans-serif"
-                />
+                android:orientation="horizontal"
+                android:padding="4dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/button_choice"
+
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:clickable="true"
+                    android:fontFamily="sans-serif"
+
+                    android:foreground="?android:attr/selectableItemBackground"
+
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/animal_crop"
+                    android:text="Science"
+                    android:textColor="@android:color/white" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:paddingLeft="14dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Difficulty Level" />
+
+                    <RadioGroup
+                        android:id="@+id/difficulty_level_group"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <RadioButton
+                            android:id="@+id/checkbox_easy"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Easy"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/checkbox_intermediate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Intermediate" />
+
+                        <RadioButton
+                            android:id="@+id/checkbox_hard"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Hard" />
+                    </RadioGroup>
+
+                </LinearLayout>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"/>
+
         </LinearLayout>
     </android.support.v7.widget.CardView>
 

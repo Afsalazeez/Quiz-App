@@ -4,11 +4,14 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
@@ -27,7 +30,12 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener mFAuthStateListener;
     private static int RC_SIGN_IN =123;
 
-    private GridView mGridView;
+    private static final String animal_description ="Play quiz on animals";
+    private static final String nature_description = "Check your knowledge about science and nature";
+    private static final String sports_description = "Passionate about sports? Here awaits your questions";
+    private static final String movie_description = "You a chain movie watcher? Hollywood is here";
+
+    private RecyclerView mListView;
 
     private CategoryAdapter mCategoryAdapter;
 
@@ -37,17 +45,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        mGridView = (GridView) findViewById(R.id.options_grid_view);
+        mListView = (RecyclerView) findViewById(R.id.options_grid_view);
         //category object creation
-        List<CategoryDet> categoryDets = new ArrayList<>();
+        ArrayList<CategoryDet> categoryDets = new ArrayList<>();
+        categoryDets.add(new CategoryDet(R.drawable.animal_crop,"Animals"));
+        categoryDets.add(new CategoryDet(R.drawable.nature,"Nature"));
+        categoryDets.add(new CategoryDet(R.drawable.sports_clipart,"Sports"));
+        categoryDets.add(new CategoryDet(R.drawable.movie_clipart,"Movie"));
 
-        mCategoryAdapter = new CategoryAdapter(this,R.layout.button_layout,categoryDets);
-        mGridView.setAdapter(mCategoryAdapter);
+        mCategoryAdapter = new CategoryAdapter(categoryDets);
+        RecyclerView.LayoutManager recyclerViewLayoutManager = new LinearLayoutManager(getApplicationContext());
+        mListView.setLayoutManager(recyclerViewLayoutManager);
+        mListView.setAdapter(mCategoryAdapter);
 
-        mCategoryAdapter.add(new CategoryDet(R.drawable.animal_crop,"Animals"));
-        mCategoryAdapter.add(new CategoryDet(R.drawable.nature,"Nature"));
-        mCategoryAdapter.add(new CategoryDet(R.drawable.sports_clipart,"Sports"));
-        mCategoryAdapter.add(new CategoryDet(R.drawable.movie_clipart,"Movie"));
         mFirebaseAuth = FirebaseAuth.getInstance();
 
         mFAuthStateListener = new FirebaseAuth.AuthStateListener() {
