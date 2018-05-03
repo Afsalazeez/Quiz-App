@@ -7,10 +7,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import com.example.anjikkadans.quizapp.NetworkUtils.QuizActivity;
 import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.FirebaseAuth;
@@ -48,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
         mCategoryAdapter.add(new CategoryDet(R.drawable.nature,"Nature"));
         mCategoryAdapter.add(new CategoryDet(R.drawable.sports_clipart,"Sports"));
         mCategoryAdapter.add(new CategoryDet(R.drawable.movie_clipart,"Movie"));
+
+
+
         mFirebaseAuth = FirebaseAuth.getInstance();
 
         mFAuthStateListener = new FirebaseAuth.AuthStateListener() {
@@ -74,6 +80,15 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         };
+
+        mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(getApplicationContext(),"Toast",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this,QuizActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
