@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     //user signed in
-                    Toast.makeText(MainActivity.this,"Welcome to Quizophile ",Toast.LENGTH_SHORT).show();
+
                 }else{
                     //user signed out
                     startActivityForResult(
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getApplicationContext(),"Toast",Toast.LENGTH_SHORT).show();
+
                 Intent intent = new Intent(MainActivity.this,QuizActivity.class);
                 startActivity(intent);
             }
@@ -131,6 +131,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.signout_menu :
                 AuthUI.getInstance().signOut(this);
                 return true;
+            case R.id.settings:
+                Intent intent = new Intent(this,SettingsActivity.class);
+                startActivity(intent);
             default:
 
         }

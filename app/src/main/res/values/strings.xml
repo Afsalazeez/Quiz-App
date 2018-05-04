@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Quizophile</string>
+    <string name="settings">Settings</string>
 </resources>

@@ -22,13 +22,20 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:launchMode="singleTop"/>
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".NetworkUtils.QuizActivity" android:theme="@style/SplashScreenTheme"></activity>
+        <activity
+            android:name=".NetworkUtils.QuizActivity"
+            android:theme="@style/AppTheme"
+            android:launchMode="singleTop"/>
+        <activity android:name=".SettingsActivity"
+            android:parentActivityName=".NetworkUtils.QuizActivity"
+            android:label="@string/settings" android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
