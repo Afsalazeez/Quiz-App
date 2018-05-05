@@ -1,4 +1,16 @@
 <resources>
     <string name="app_name">Quizophile</string>
     <string name="settings">Settings</string>
+    <!-- list preferences labels-->
+    <string name="pref_difficulty_key">difficulty</string>
+    <string name="pref_difficulty_label">Difficulty</string>
+    <string name="pref_difficulty_easy_label">Easy</string>
+    <string name="pref_difficulty_medium_label">Medium</string>
+    <string name="pref_difficulty_hard_label">Hard</string>
+    <!-- list preference values-->
+    <string name="pref_difficulty_easy_value" translatable="false">easy</string>
+    <string name="pref_difficulty_medium_value" translatable="false">medium</string>
+    <string name="pref_difficult_hard_value" translatable="false">hard</string>
+    <!-- occassional string-->
+    <string name="conditional_message">The selected category does not have questions of prefered difficulty</string>
 </resources>

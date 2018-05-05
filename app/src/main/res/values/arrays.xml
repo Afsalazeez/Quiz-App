@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- preference difficulty lable array-->
+    <array name="pref_difficulty_options_label">
+        <item>@string/pref_difficulty_easy_label</item>
+        <item>@string/pref_difficulty_medium_label</item>
+        <item>@string/pref_difficulty_hard_label</item>
+    </array>
+    <array name="pref_difficulty_options_value">
+        <item>@string/pref_difficulty_easy_value</item>
+        <item>@string/pref_difficulty_medium_value</item>
+        <item>@string/pref_difficult_hard_value</item>
+    </array>
+</resources>

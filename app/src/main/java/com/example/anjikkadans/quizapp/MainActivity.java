@@ -1,6 +1,11 @@
 package com.example.anjikkadans.quizapp;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     private static int RC_SIGN_IN =123;
 
     private GridView mGridView;
+
+    private static final int animalCode = 27;
 
     private CategoryAdapter mCategoryAdapter;
 
@@ -83,10 +90,38 @@ public class MainActivity extends AppCompatActivity {
 
         mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int pos, long id) {
 
-                Intent intent = new Intent(MainActivity.this,QuizActivity.class);
-                startActivity(intent);
+                switch (pos){
+                    case 0:
+                        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                        if (preferences.getString(getString(R.string.pref_difficulty_key),
+                                getString(R.string.pref_difficulty_medium_value))
+                                .equals(getString(R.string.pref_difficulty_easy_value))){
+                            Dialog dialog = new AlertDialog.Builder(MainActivity.this)
+                                    .setMessage(getString(R.string.conditional_message))
+                                    .setPositiveButton(R.string.settings, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            Intent intent = new Intent(getApplicationContext(),SettingsActivity.class);
+                                            startActivity(intent);
+                                        }
+                                    }).show();
+                        }else{
+                            Intent intent = new Intent(MainActivity.this,QuizActivity.class);
+                            intent.putExtra("CategoryCode",27);
+                            startActivity(intent);
+                        }
+                        break;
+
+                    case 1:
+                        Intent intent = new Intent(MainActivity.this,QuizActivity.class);
+                        intent.putExtra("CategoryCode",17);
+                        startActivity(intent);
+                    case 2:
+                    case 3:
+                }
+
             }
         });
     }
