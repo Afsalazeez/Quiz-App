@@ -22,4 +22,6 @@ public interface DownloadCallback<T> {
     void onProgressUpdate(int progressCode, int percentComplete);
 
     void finishDownloading();
+
+    void networkFragmentReady();
 }

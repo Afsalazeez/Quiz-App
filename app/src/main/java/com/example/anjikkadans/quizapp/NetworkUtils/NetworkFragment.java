@@ -30,6 +30,7 @@ public class NetworkFragment extends Fragment {
         NetworkFragment networkFragment = (NetworkFragment) fragmentManager
                 .findFragmentByTag(NetworkFragment.TAG);
         if (networkFragment == null || !(url.equals(mUrlString))) {
+
             networkFragment = new NetworkFragment();
             Bundle args = new Bundle();
             args.putString(URL_KEY, url);
@@ -46,6 +47,7 @@ public class NetworkFragment extends Fragment {
         Log.e("Network Fragment","onCreate called and url set");
         mUrlString = getArguments().getString(URL_KEY);
         setRetainInstance(true);
+        mCallback.networkFragmentReady();
     }
 
     @Override
@@ -63,16 +65,19 @@ public class NetworkFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        cancelDownload();
     }
 
     public void startDownload() {
+        Log.v("NetworkFragment","started downloading");
         cancelDownload();
         mDownloadTask = new DownloadTask(mCallback);
+        Log.v("NetworkFragment",mUrlString);
         mDownloadTask.execute(mUrlString);
     }
 
     public void cancelDownload() {
-        Log.v("NetworkFragment","downloadCancelled");
+        Log.v("NetworkFragment","existing downloadCancelled for the latest downnload");
         if (mDownloadTask != null) {
             mDownloadTask.cancel(true);
         }

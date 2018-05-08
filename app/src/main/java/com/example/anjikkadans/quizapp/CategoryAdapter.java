@@ -25,6 +25,7 @@ public class CategoryAdapter extends ArrayAdapter<CategoryDet> {
     public CategoryAdapter(Context context, int resource, List<CategoryDet> objects) {
 
         super(context, resource, objects);
+
     }
 
 
