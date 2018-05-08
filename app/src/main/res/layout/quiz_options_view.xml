@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    android:id="@+id/quiz_options_view"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/AppTheme.CardViewStyle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <View
+            android:id="@+id/view_choice"
+            android:layout_width="15dp"
+            android:layout_height="match_parent"
+            android:background="@color/red"/>
+        <TextView
+            android:id="@+id/text_view_choice"
+            style="@style/AppTheme.CardViewStyle.TextStyle"
+            android:text="Choice Answer"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            />
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>
